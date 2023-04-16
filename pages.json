@@ -17,6 +17,20 @@
             "style" : {}
         }
     ],
+    "subPackages": [
+        {
+          "root": "subpkg",
+          "pages": [{
+                    "path" : "goods_datail/goods_datail",
+                    "style" : {}
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" : {}
+                }
+            ]
+        }
+      ],
 	"globalStyle": {
 		"navigationBarTextStyle": "dark",
 		"navigationBarTitleText": "uni-app",
