@@ -1,13 +1,15 @@
 <template>
 	<view>
-   <view class="scroll-view-container">
-     <!-- 左边的滚动区域 -->
-    <scroll-view class="left-scroll-view" scroll-y="true" :style="{height : wh + 'px'}">
-      <block v-for="(item, i) in cateList" :key="i">
-                <view :class="['left-scroll-view-item', i === active ? 'active' : '']" @click="activeChanged(i)">{{item.cat_name}}</view>
-              </block>
-    </scroll-view>
-       <!-- 右侧的滑动区域 -->
+    <!-- 使用自定义的搜索组件 -->
+    <my-search @click='gotoSearch'></my-search>
+    <view class="scroll-view-container">
+      <!-- 左侧的滑动区域 -->
+      <scroll-view class="left-scroll-view" scroll-y="true" :style="{height: wh + 'px'}">
+        <block v-for="(item, i) in cateList" :key="i">
+          <view :class="['left-scroll-view-item', i === active ? 'active' : '']" @click="activeChanged(i)">{{item.cat_name}}</view>
+        </block>
+      </scroll-view>
+      <!-- 右侧的滑动区域 -->
       <scroll-view scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
         <view class="cate-lv2" v-for="(item2, i2) in cateLevel2" :key="i2">
           <!-- 二级分类的标题 -->
@@ -24,11 +26,11 @@
           </view>
         </view>
       </scroll-view>
-
    </view>
 	</view>
+    </view>
+  </view>
 </template>
-
 <script>
 	export default {
 		data() {
@@ -47,6 +49,8 @@
       const sysInfo = uni.getSystemInfoSync()
       // 动态赋值给wh
       this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight-50
+
       this.getCateList()
     },
 		methods: {
@@ -67,6 +71,12 @@
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid='+item3.cat_id
         })
+      },
+      gotoSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
+        })
+
       }
 		}
 	}

@@ -81,15 +81,15 @@
 		},
 		data() {
 			return {
-				show: false,
-				showSync: false,
+				show: true,
+				showSync: true,
 				searchVal: ""
 			}
 		},
 		watch: {
 			searchVal() {
 				this.$emit("input", {
-					value: this.searchVal
+					value: this.searchVal 
 				})
 			}
 		},
@@ -144,7 +144,7 @@
 		flex-direction: row;
 		position: relative;
 		padding: 16rpx;
-		background-color: #ffffff;
+		background-color:#C00000;
 	}
 
 	.uni-searchbar__box {
